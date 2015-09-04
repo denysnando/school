@@ -1,0 +1,33 @@
+<div class="page-header clearfix">
+  <div class="pull-left">
+    <h1><small>Lista de Estudante</small></h1>
+  </div>
+</div>
+<table class="table table-condensed table-bordered table-striped table-hover ">
+  <thead>
+    <tr>
+      <th>Código</th>
+      <th>Nome</th>
+      <th>Número de Registro</th>
+      <th>Status</th>
+      <th>Editar</th>
+      <th>Desativar</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @students.each do |s| %>
+      <tr>
+        <td><%= s.id %></td>
+        <td><%= s.name %></td>
+        <td><%= s.register_number %></td>
+        <td><%= s.status_pt %></td>
+        <td><%=link_to raw("<span class='glyphicon glyphicon-edit'></span>"), edit_student_path(s) %></td>
+        <td><%=link_to raw("<span class='glyphicon glyphicon-remove'></span>"), student_desativation_student_path(s) %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+  <%= link_to 'Cadastrar Novo Estudante', new_student_path, :class => 'btn btn-primary'  %>

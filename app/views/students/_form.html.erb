@@ -1,0 +1,23 @@
+
+<%= simple_form_for(@student, wrapper: :horizontal_input_group) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-inputs">
+    <%= f.input :name, wrapper: :vertical_input_group, hint: "Obrigatório", label: false  do %>
+    <span class="input-group-addon">Nome</span>
+      <%= f.input_field :name, class: "form-control" %>
+    <% end %>
+
+    <%= f.input :register_number, wrapper: :vertical_input_group, hint: "Obrigatório", label: false  do %>
+    <span class="input-group-addon">Registro</span>
+      <%= f.input_field :register_number, class: "form-control" %>
+    <% end %>
+
+    <hr>
+  </div>
+
+  <div class="btn-group">
+    <%= link_to 'Cancelar', students_path, class: 'btn btn-default' %>
+    <%= f.button :submit, 'Criar Estudante', class: 'btn btn-primary' %>
+  </div>
+<% end %>
