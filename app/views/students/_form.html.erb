@@ -1,5 +1,8 @@
 
-<%= simple_form_for(@student, wrapper: :horizontal_input_group) do |f| %>
+<%= simple_form_for(@student, wrapper: :horizontal_input_group,
+        wrapper_mappings: {
+          check_boxes: :horizontal_radio_and_checkboxes
+        }) do |f| %>
   <%= f.error_notification %>
 
   <div class="form-inputs">
@@ -12,7 +15,11 @@
     <span class="input-group-addon">Registro</span>
       <%= f.input_field :register_number, class: "form-control" %>
     <% end %>
+    <hr>
 
+    <%= f.input :courses, wrapper: :vertical_input_group do %>
+      <%= f.association :courses, as: :check_boxes, class: "form-control", label: false %>
+    <% end %>
     <hr>
   </div>
 

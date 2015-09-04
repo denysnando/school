@@ -1,0 +1,18 @@
+development:
+  adapter: postgresql
+  encoding: utf8
+  reconnect: false
+  database: school_development
+  pool: 5
+  host: localhost
+  username: denys
+  password:
+
+test:
+  adapter: postgresql
+  encoding: utf8
+  reconnect: false
+  database: school_test
+  pool: 5
+  username: denys
+  password:

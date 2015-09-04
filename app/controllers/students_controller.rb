@@ -22,6 +22,7 @@ class StudentsController < ApplicationController
   end
 
   def edit
+    @student = Student.find(params[:id])
 
   end
 
@@ -49,6 +50,6 @@ class StudentsController < ApplicationController
     end
 
     def student_params
-      params.require(:student).permit(:name, :register_number, :status)
+      params.require(:student).permit(:name, :register_number, :status, course_ids: [])
     end
 end
