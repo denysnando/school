@@ -22,8 +22,11 @@ gem 'rails-assets-angular-i18n', '1.2.14'
 gem 'rails-assets-restangular', '~> 1.3.1'
 gem 'rails-assets-lodash', '~> 2.4.1'
 
-gem 'simple_form', '~> 3.0.2'
+gem 'bootstrap-sass', '~> 3.1.1.0'
+gem 'simple_form'
+gem 'devise'
 gem 'haml', '~> 4.0.4'
+gem 'unicorn'
 
 gem 'enumerate_it', '~> 1.2.0'
 gem 'pg', '~> 0.17.1'
