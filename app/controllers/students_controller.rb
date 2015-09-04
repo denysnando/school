@@ -13,10 +13,10 @@ class StudentsController < ApplicationController
   def create
     @student = Student.new(student_params)
       if @student.save
-        error_notification = 'Aluno criado com sucesso!'
+        flash[:notice] = 'Estudante criado com sucesso!'
         redirect_to students_path
       else
-        flash[:error] = 'Nome do Aluno obrigatório'
+        flash[:error] = 'Registro deve ser unico para cada estudante'
         redirect_to new_student_path
       end
   end
@@ -30,9 +30,10 @@ class StudentsController < ApplicationController
     @student = Student.find(params[:id])
     @student.update_attributes(student_params)
       if @student.save
+        flash[:notice] = 'Estudante editado com sucesso!'
         redirect_to students_path
       else
-        flash[:error] = 'Nome do Aluno obrigatório'
+        flash[:error] = 'Registro deve ser unico para cada estudante'
         redirect_to edit_student_path(@student)
       end
   end

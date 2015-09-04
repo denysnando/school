@@ -3,6 +3,13 @@
     <h1><small>Lista de Estudante</small></h1>
   </div>
 </div>
+<% if flash[:notice].present? %>
+  <div class="alert alert-success" role="alert">
+    <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+    <span class="sr-only">Error:</span>
+    <%= flash[:notice] %>
+  </div>
+<% end %>
 <table class="table table-condensed table-bordered table-striped table-hover ">
   <thead>
     <tr>

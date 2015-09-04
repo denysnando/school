@@ -13,10 +13,9 @@ class CoursesController < ApplicationController
   def create
     @course = Course.new(course_params)
       if @course.save
-        error_notification = 'Aluno criado com sucesso!'
+        flash[:notice] = 'Curso criado com sucesso!'
         redirect_to courses_path
       else
-        flash[:error] = 'Nome do Aluno obrigatório'
         redirect_to new_course_path
       end
   end
@@ -29,9 +28,9 @@ class CoursesController < ApplicationController
     @course = Course.find(params[:id])
     @course.update_attributes(course_params)
       if @course.save
+        flash[:notice] = 'Curso editado com sucesso!'
         redirect_to courses_path
       else
-        flash[:error] = 'Nome do Aluno obrigatório'
         redirect_to edit_course_path(@course)
       end
   end
