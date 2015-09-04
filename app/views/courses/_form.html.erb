@@ -1,0 +1,23 @@
+
+<%= simple_form_for(@course, wrapper: :horizontal_input_group) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-inputs">
+    <%= f.input :name, wrapper: :vertical_input_group, hint: "Obrigatório", label: false  do %>
+    <span class="input-group-addon">Nome</span>
+      <%= f.input_field :name, class: "form-control" %>
+    <% end %>
+
+    <%= f.input :description, wrapper: :vertical_input_group, label: false  do %>
+    <span class="input-group-addon">Descrição</span>
+      <%= f.input_field :description, class: "form-control", as: :text %>
+    <% end %>
+
+    <hr>
+  </div>
+
+  <div class="btn-group">
+    <%= link_to 'Cancelar', courses_path, class: 'btn btn-default' %>
+    <%= f.button :submit, 'Criar Curso', class: 'btn btn-primary' %>
+  </div>
+<% end %>

@@ -5,8 +5,9 @@ Rails.application.routes.draw do
   resources :students do
     get :desativation_student
   end
-  resources :courses
+  resources :courses do
+    get :desativation_courses
+  end
 
   root :to => 'welcomes#index'
-
 end

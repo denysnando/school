@@ -1,0 +1,33 @@
+<div class="page-header clearfix">
+  <div class="pull-left">
+    <h1><small>Lista de Cursos</small></h1>
+  </div>
+</div>
+<table class="table table-condensed table-bordered table-striped table-hover ">
+  <thead>
+    <tr>
+      <th>Código</th>
+      <th>Nome</th>
+      <th>Descrição</th>
+      <th>Status</th>
+      <th style="width: 30px;">Editar</th>
+      <th style="width: 30px;">Desativar</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @courses.each do |c| %>
+      <tr>
+        <td><%= c.id %></td>
+        <td><%= c.name %></td>
+        <td><%= c.description %></td>
+        <td><%= c.status_pt %></td>
+        <td><%=link_to raw("<span class='glyphicon glyphicon-edit'></span>"), edit_course_path(c) %></td>
+        <td><%=link_to raw("<span class='glyphicon glyphicon-edit'></span>"), course_desativation_courses_path(c) %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+  <%= link_to 'Cadastrar Novo Curso', new_course_path, :class => 'btn btn-primary'  %>
