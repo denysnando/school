@@ -17,20 +17,26 @@
       <th>Nome</th>
       <th>Descrição</th>
       <th>Status</th>
+      <th>Criado em:</th>
       <th style="width: 30px;">Editar</th>
-      <th style="width: 30px;">Desativar</th>
+      <th style="width: 30px;">Ativar/Desativar</th>
     </tr>
   </thead>
 
   <tbody>
     <% @courses.each do |c| %>
       <tr>
-        <td><%= c.id %></td>
-        <td><%= c.name %></td>
-        <td><%= c.description %></td>
-        <td><%= c.status_pt %></td>
+        <td><%=link_to c.id, course_path(c) %></td>
+        <td><%=link_to c.name, course_path(c) %></td>
+        <td><%=link_to c.description, course_path(c) %></td>
+        <td><%=link_to c.status_pt, course_path(c) %></td>
+        <td><%=l c.created_at %></td>
         <td><%=link_to raw("<span class='glyphicon glyphicon-edit'></span>"), edit_course_path(c) %></td>
-        <td><%=link_to raw("<span class='glyphicon glyphicon-edit'></span>"), course_desativation_courses_path(c) %></td>
+        <% if c.status == 0 %>
+          <td style="text-align: center;"><%=link_to raw("<span class='glyphicon glyphicon-remove'></span>"), course_desativation_courses_path(c) %></td>
+        <% else %>
+          <td style="text-align: center;"><%=link_to raw("<span class='glyphicon glyphicon-ok'></span>"), course_ativation_courses_path(c) %></td>
+        <% end %>
       </tr>
     <% end %>
   </tbody>

@@ -18,19 +18,23 @@
       <th>Número de Registro</th>
       <th>Status</th>
       <th style="width: 30px;">Editar</th>
-      <th style="width: 30px;">Desativar</th>
+      <th style="width: 30px;">Ativar/Desativar</th>
     </tr>
   </thead>
 
   <tbody>
     <% @students.each do |s| %>
       <tr>
-        <td><%= s.id %></td>
-        <td><%= s.name %></td>
-        <td><%= s.register_number %></td>
-        <td><%= s.status_pt %></td>
+        <td><%= link_to s.id, student_path(s) %></td>
+        <td><%= link_to s.name, student_path(s) %></td>
+        <td><%= link_to s.register_number, student_path(s) %></td>
+        <td><%= link_to s.status_pt, student_path(s) %></td>
         <td><%=link_to raw("<span class='glyphicon glyphicon-edit'></span>"), edit_student_path(s) %></td>
-        <td><%=link_to raw("<span class='glyphicon glyphicon-remove'></span>"), student_desativation_student_path(s) %></td>
+        <% if s.status == 0 %>
+          <td style="text-align: center;"><%=link_to raw("<span class='glyphicon glyphicon-remove'></span>"), student_desativation_student_path(s) %></td>
+        <% else %>
+          <td style="text-align: center;"><%=link_to raw("<span class='glyphicon glyphicon-ok'></span>"), student_ativation_student_path(s) %></td>
+        <% end %>
       </tr>
     <% end %>
   </tbody>

@@ -1,0 +1,25 @@
+<div class="page-header clearfix">
+  <div class="pull-left">
+    <h1><small>Curso <%= @course.name %> </small></h1>
+  </div>
+</div>
+<h2><small>Alunos nesse curso </small></h2>
+<table class="table table-condensed table-bordered table-striped table-hover ">
+  <thead>
+    <tr>
+      <th>Código</th>
+      <th>Nome</th>
+      <th>Registro</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @course.students.each do |c| %>
+      <tr>
+        <td><%= link_to c.id, course_path(c) %></td>
+        <td><%= link_to c.name, course_path(c) %></td>
+        <td><%= link_to c.register_number, course_path(c) %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

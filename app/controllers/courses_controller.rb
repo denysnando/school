@@ -38,6 +38,14 @@ class CoursesController < ApplicationController
   def desativation_courses
     @course = Course.find(params[:course_id])
     @course.update_attribute(:status, 1)
+    flash[:notice] = 'Curso Cancelado com sucesso!'
+    redirect_to courses_path
+  end
+
+  def ativation_courses
+    @course = Course.find(params[:course_id])
+    @course.update_attribute(:status, 0)
+    flash[:notice] = 'Curso reativado com sucesso!'
     redirect_to courses_path
   end
 

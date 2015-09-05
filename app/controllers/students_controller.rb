@@ -21,13 +21,9 @@ class StudentsController < ApplicationController
       end
   end
 
-  def edit
-    @student = Student.find(params[:id])
-
-  end
-
   def update
     @student = Student.find(params[:id])
+    if @student.status == 0
     @student.update_attributes(student_params)
       if @student.save
         flash[:notice] = 'Estudante editado com sucesso!'
@@ -36,11 +32,21 @@ class StudentsController < ApplicationController
         flash[:error] = 'Registro deve ser unico para cada estudante'
         redirect_to edit_student_path(@student)
       end
+    else
+      flash[:error] = 'Estudante desativado, deve se ativar o estudante para atualizar'
+      redirect_to edit_student_path(@student)
+    end
   end
 
   def desativation_student
     @student = Student.find(params[:student_id])
     @student.update_attribute(:status, 1)
+    redirect_to students_path
+  end
+
+  def ativation_student
+    @student = Student.find(params[:student_id])
+    @student.update_attribute(:status, 0)
     redirect_to students_path
   end
 

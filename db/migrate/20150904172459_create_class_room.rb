@@ -3,7 +3,7 @@ class CreateClassRoom < ActiveRecord::Migration
     create_table :class_rooms do |t|
       t.belongs_to :student, index: true
       t.belongs_to :course, index: true
-      t.datetime :entry_at
+      t.timestamps
     end
   end
 end
